@@ -15,7 +15,7 @@ function App() {
   const phoneSize = useMediaQuery("(max-width:500px)");
   const [result, setResult] = useState('')
   const [data, setData] = useState([])
-  const [singleResult, setSingleResult] = useState('')
+  const [singleResult, setSingleResult] = useState([])
 
 
 
@@ -46,7 +46,7 @@ function App() {
     )} />
     <Intro phoneSize ={phoneSize}/>
     <Route exact path ='/' render={routeProps => (
-      <Main {...routeProps} setSingleResult = {setSingleResult}  phoneSize = {phoneSize} result = {setResult} setData = {setData} data = {data}/>
+      <Main {...routeProps} singleResult ={singleResult} setSingleResult = {setSingleResult}  phoneSize = {phoneSize} result = {setResult} setData = {setData} data = {data}/>
     )} />
     <Route path ='/:id' render={routeProps => (
       <SinglePage {...routeProps} result = {result} singleResult = {singleResult}/>

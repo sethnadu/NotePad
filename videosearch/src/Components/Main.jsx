@@ -10,13 +10,13 @@ import SinglePage from './SinglePage'
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 
-function Main({ data, setSingleResult}){
+function Main({ data, setSingleResult, singleResult}){
 
     return (
         <>
         <div style={{"margin": "20px", "display": "flex", 'flexFlow': 'row wrap', "justifyContent": "center"}}>
             {data ? data.map(result => {
-                return <ResultCard setSingleResult = {setSingleResult} key={result.name} result={result}/>
+                return <ResultCard singleResult={singleResult} setSingleResult = {setSingleResult} key={result.name} result={result} data={data}/>
             }) : <h2 style={{"marginTop": "150px"}}>Search above!</h2>}
         </div>
         </>

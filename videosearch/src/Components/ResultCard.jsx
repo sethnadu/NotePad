@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {Link, Route} from 'react-router-dom'
 import SinglePage from './SinglePage'
 
@@ -59,10 +59,11 @@ const useStyles = makeStyles(theme => ({
 
 
 
-const ResultCard = ({result, setSingleResult}) => {
+const ResultCard = ({result, setSingleResult, singleResult, data}) => {
     const classes = useStyles();
     const dense = false;
-    setSingleResult(result)
+    const array = []
+    setSingleResult(data)
   return (
     <Card className={classes.card}>
         <CardMedia
@@ -74,7 +75,7 @@ const ResultCard = ({result, setSingleResult}) => {
           <Typography gutterBottom variant="h5" component="h2">
             {result.name}
           </Typography>
-          <Link to={`/${result.name}`}><Button variant="contained">More Info</Button></Link>
+          <Link style={{"textDecoration": "none"}} to={`/${result.name}`}><Button variant="contained">More Info</Button></Link>
           <Grid className = {classes.sources}>
           <Typography variant="h6" className={classes.title}>
             Streaming Platforms Below:
