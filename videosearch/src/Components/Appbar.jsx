@@ -68,7 +68,7 @@ const useStyles = makeStyles(theme => ({
     }
   }));
 
-function Appbar({setResult, result, getInfo}){
+function Appbar(props){
     const classes = useStyles();
     const [value, setValues] = useState()
     const handleChange = event => {
@@ -78,8 +78,9 @@ function Appbar({setResult, result, getInfo}){
 
     const handleSubmit = event => {
         event.preventDefault()
-        setResult(value)
-        console.log(result)
+        props.setResult(value)
+        props.history.push('/')
+        
     }
  
     return (

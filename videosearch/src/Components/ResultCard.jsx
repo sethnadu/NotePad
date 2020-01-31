@@ -1,5 +1,7 @@
-import React, {useEffect, useState} from 'react';
-import axios from "axios"
+import React from 'react';
+import {Link, Route} from 'react-router-dom'
+import SinglePage from './SinglePage'
+
 
 // Material UI Imports
 import { makeStyles } from '@material-ui/core/styles';
@@ -57,9 +59,10 @@ const useStyles = makeStyles(theme => ({
 
 
 
-const ResultCard = ({result, setName, name, imdb}) => {
+const ResultCard = ({result, setSingleResult}) => {
     const classes = useStyles();
     const dense = false;
+    setSingleResult(result)
   return (
     <Card className={classes.card}>
         <CardMedia
@@ -71,11 +74,7 @@ const ResultCard = ({result, setName, name, imdb}) => {
           <Typography gutterBottom variant="h5" component="h2">
             {result.name}
           </Typography>
-          {imdb ? (
-            <>
-                <h2>{imdb.Year}</h2>
-            </>
-          ) : null}
+          <Link to={`/${result.name}`}><Button variant="contained">More Info</Button></Link>
           <Grid className = {classes.sources}>
           <Typography variant="h6" className={classes.title}>
             Streaming Platforms Below:
