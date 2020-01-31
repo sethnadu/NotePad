@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
       [theme.breakpoints.up('sm')]: {
         display: 'block',
       },
-      color: "black"
+      color: "white"
     },
     search: {
       position: 'relative',
@@ -58,7 +58,8 @@ const useStyles = makeStyles(theme => ({
     play: {
         width: "25px",
         height: '25px',
-        marginRight: '10px'
+        marginRight: '10px',
+        marginBottom: '3px'
     },
     topTitle: {
         display: 'flex',
@@ -67,7 +68,7 @@ const useStyles = makeStyles(theme => ({
     }
   }));
 
-function Appbar({setResult, result}){
+function Appbar({setResult, result, getInfo}){
     const classes = useStyles();
     const [value, setValues] = useState()
     const handleChange = event => {
@@ -83,7 +84,7 @@ function Appbar({setResult, result}){
  
     return (
         <div className={classes.grow}>
-        <AppBar position="static" style={{'backgroundColor': "gray"}}>
+        <AppBar position="static" style={{'backgroundColor': "black"}}>
             <Toolbar>
             <img className = {classes.play} src={playIcon} />
             <Typography className={classes.title} variant="h6" noWrap>

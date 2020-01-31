@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import axios from "axios"
 
 // Material UI Imports
 import { makeStyles } from '@material-ui/core/styles';
@@ -10,12 +11,15 @@ import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 
 
 const useStyles = makeStyles(theme => ({
     card: {
       maxWidth: 345,
-      margin: "20px"
+      margin: "20px",
+      padding: '20px',
+      border: "4px solid black"
     },
     media: {
       height: 140,
@@ -52,10 +56,11 @@ const useStyles = makeStyles(theme => ({
 
 
 
-const ResultCard = ({result}) => {
+
+const ResultCard = ({result, setName, imdb}) => {
     const classes = useStyles();
     const dense = false;
-
+    console.log(imdb)
   return (
     <Card className={classes.card}>
         <CardMedia
@@ -67,6 +72,11 @@ const ResultCard = ({result}) => {
           <Typography gutterBottom variant="h5" component="h2">
             {result.name}
           </Typography>
+          {imdb ? (
+            <>
+                <h2>{imdb.Year}</h2>
+            </>
+          ) : null}
           <Grid className = {classes.sources}>
           <Typography variant="h6" className={classes.title}>
             Streaming Platforms Below:
@@ -75,9 +85,9 @@ const ResultCard = ({result}) => {
             <List dense={dense} className = {classes.listItems}>
               {result.locations ? result.locations.map(source => {
                 return (
-                <ListItem className={classes.listItem}>
+                <ListItem key={source.display_name} className={classes.listItem}>
                     <img src={source.icon} />
-                    <a href={`${source.url}`}><p>Visit</p></a>
+                    <a style={{"textDecoration": "none"}} href={`${source.url}`}><Button variant="contained">Visit</Button></a>
                 </ListItem>)
               }): <h2>No Platforms available</h2>}
             </List>
