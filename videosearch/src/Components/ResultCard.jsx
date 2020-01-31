@@ -57,10 +57,9 @@ const useStyles = makeStyles(theme => ({
 
 
 
-const ResultCard = ({result, setName, imdb}) => {
+const ResultCard = ({result, setName, name, imdb}) => {
     const classes = useStyles();
     const dense = false;
-    console.log(imdb)
   return (
     <Card className={classes.card}>
         <CardMedia

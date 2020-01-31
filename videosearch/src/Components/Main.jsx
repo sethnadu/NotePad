@@ -13,7 +13,7 @@ function Main(){
     const [result, setResult] = useState('')
     const [data, setData] = useState([])
     const [imdb, setImdb] = useState([])
-    const [name, setName] = useState()
+    const [name, setName] = useState([])
 
     useEffect(() => {
         {result !== "" ? 
@@ -26,7 +26,7 @@ function Main(){
                 })
             .then(response => {
                 setData(response.data.results)
-                console.log(data)
+                // console.log(data)
             })
             .catch(error => {
                 console.log('Error: ', error)
@@ -35,15 +35,17 @@ function Main(){
       }, [result])
     
     // useEffect(() => {
-    //     axios
+    //        axios
     //         .get(`http://www.omdbapi.com/?t=${name}&apikey=8582b8da`)
     //         .then(response => {
-    //             setImdb(response.data)
+    //             setImdb([...imdb, response.data])
+    //             nameArray.append([...nameArray, name])
     //         })
     //         .catch(error => {
     //             console.log("Error: ", error)
     //         })
-    // }, [name])
+    // }, [name]) 
+        
         
 
     return (
@@ -52,7 +54,7 @@ function Main(){
         <Intro phoneSize ={phoneSize}/>
         <div style={{"margin": "20px", "display": "flex", 'flexFlow': 'row wrap', "justifyContent": "center"}}>
             {data ? data.map(result => {
-                return <ResultCard key={result.name} result={result} imdb={imdb} setName={setName}/>
+                return <ResultCard key={result.name} result={result} imdb={imdb} setName={setName} name ={name}/>
             }) : <h2 style={{"marginTop": "150px"}}>Search above!</h2>}
         </div>
         </>
