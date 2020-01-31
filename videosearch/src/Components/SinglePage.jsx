@@ -73,7 +73,7 @@ const SinglePage = (props) => {
                     <div className = {classes.underImage}>
                         <p>{imdb.Year}</p>
                         <p>{imdb.imdbRating}/10</p>
-                        <p>{imdb.totalSeasons} Seasons</p>
+                        {imdb.totalSeasons ? <p>{imdb.totalSeasons} Seasons</p> : null}
                         <p>{imdb.Rated}</p>
                     </div>
                     <p>{imdb.Plot}</p>
