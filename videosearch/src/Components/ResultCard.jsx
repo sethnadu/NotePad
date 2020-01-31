@@ -15,6 +15,7 @@ import Grid from '@material-ui/core/Grid';
 const useStyles = makeStyles(theme => ({
     card: {
       maxWidth: 345,
+      margin: "20px"
     },
     media: {
       height: 140,
@@ -30,16 +31,22 @@ const useStyles = makeStyles(theme => ({
         margin: theme.spacing(4, 0, 2),
     },
     sources: {
-        margin: "auto",
+        margin: "auto 10px",
         display: "flex",
         justifyContent: "center",
-        flexDirection: 'column'
+        flexDirection: 'column',
+        width: "100%"
     },
     listItems: {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: "space-evenly",
         margin: 'auto'
+    },
+    listItem: {
+        width: '100%',
+        display: 'flex',
+        justifyContent: "space-evenly",
     }
     }));
 
@@ -47,7 +54,7 @@ const useStyles = makeStyles(theme => ({
 
 const ResultCard = ({result}) => {
     const classes = useStyles();
-    const [dense, setDense] = React.useState(false);
+    const dense = false;
 
   return (
     <Card className={classes.card}>
@@ -60,7 +67,7 @@ const ResultCard = ({result}) => {
           <Typography gutterBottom variant="h5" component="h2">
             {result.name}
           </Typography>
-          <Grid item xs={12} md={6} className = {classes.sources}>
+          <Grid className = {classes.sources}>
           <Typography variant="h6" className={classes.title}>
             Streaming Platforms Below:
           </Typography>
@@ -68,7 +75,7 @@ const ResultCard = ({result}) => {
             <List dense={dense} className = {classes.listItems}>
               {result.locations ? result.locations.map(source => {
                 return (
-                <ListItem>
+                <ListItem className={classes.listItem}>
                     <img src={source.icon} />
                     <a href={`${source.url}`}><p>Visit</p></a>
                 </ListItem>)

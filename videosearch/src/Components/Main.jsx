@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import Appbar from './Appbar'
 import ResultCard from './ResultCard'
+import Intro from './Intro'
 
 // Material UI Imports
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -15,7 +16,7 @@ function Main(){
     useEffect(() => {
         {result != "" ? 
         (axios
-            .get(`https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=${result}`, 
+            .get(`https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=${result}&country=us`, 
                 {headers: {
                 "X-RapidAPI-Host": "utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com",
                 "X-RapidAPI-Key": "56439e8059msh74d7e363beea6aap1a1903jsna25a29b9dce8"
@@ -35,9 +36,12 @@ function Main(){
     return (
         <>
         <Appbar setResult = {setResult} result = {result}/>
-        {data ? data.map(result => {
-            return <ResultCard key={result.name} result={result} />
-        }) : <h2>Search above!</h2>}
+        <Intro phoneSize ={phoneSize}/>
+        <div style={{"margin": "20px", "display": "flex", 'flexFlow': 'row wrap', "justifyContent": "center"}}>
+            {data ? data.map(result => {
+                return <ResultCard key={result.name} result={result} />
+            }) : <h2>Search above!</h2>}
+        </div>
         </>
     )
 }
