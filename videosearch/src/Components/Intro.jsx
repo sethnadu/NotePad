@@ -16,7 +16,7 @@ const Intro = () => {
     return (
         <div className = {classes.card}>
             <h2>Stream Finder!</h2>
-            <p>Search for tv show and movies above to find what platform they are being streamed on!</p>
+            <p>Search for a <span style={{"fontWeight": "bold"}}>tv show</span> or <span style={{"fontWeight": "bold"}}>movie</span> above to find what platform they are being streamed on!</p>
         </div>
     )
 }

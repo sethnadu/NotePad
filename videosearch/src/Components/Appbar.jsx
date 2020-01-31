@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-
+import playIcon from '../Assets/Images/play.png'
 // Material UI Imports
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -18,6 +18,7 @@ const useStyles = makeStyles(theme => ({
       [theme.breakpoints.up('sm')]: {
         display: 'block',
       },
+      color: "black"
     },
     search: {
       position: 'relative',
@@ -53,6 +54,16 @@ const useStyles = makeStyles(theme => ({
       [theme.breakpoints.up('md')]: {
         width: 200,
       },
+    },
+    play: {
+        width: "25px",
+        height: '25px',
+        marginRight: '10px'
+    },
+    topTitle: {
+        display: 'flex',
+        justifyContent: "space-evenly",
+        alignItems: 'center'
     }
   }));
 
@@ -72,8 +83,9 @@ function Appbar({setResult, result}){
  
     return (
         <div className={classes.grow}>
-        <AppBar position="static" style={{'backgroundColor': "black"}}>
+        <AppBar position="static" style={{'backgroundColor': "gray"}}>
             <Toolbar>
+            <img className = {classes.play} src={playIcon} />
             <Typography className={classes.title} variant="h6" noWrap>
                 Stream Finder
             </Typography>
