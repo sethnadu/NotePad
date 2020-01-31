@@ -52,7 +52,10 @@ const SinglePage = (props) => {
         {media !== '' ?
         (
            axios
-            .get(`http://www.omdbapi.com/?t=${media.name}&plot=full&apikey=8582b8da`)
+            .get(`http://www.omdbapi.com/?t=${media.name}&plot=full&apikey=8582b8da`, 
+            {headers: {
+                
+            }})
             .then(response => {
                 setImdb(response.data)
             })
