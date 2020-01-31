@@ -30,12 +30,12 @@ function App() {
                 })
             .then(response => {
                 setData(response.data.results)
-                console.log(data)
+                // console.log(data)
             })
             .catch(error => {
                 console.log('Error: ', error)
             })) 
-            : console.log("search can't be empty")}
+            : console.log()}
       }, [result])
     
 

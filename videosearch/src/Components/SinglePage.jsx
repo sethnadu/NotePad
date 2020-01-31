@@ -36,8 +36,6 @@ const SinglePage = (props) => {
     const [imdb, setImdb] = useState()
     const [media, setMedia] = useState('')
     const classes = useStyles();
-    console.log("props", props)
-    console.log("props", props.singleResult)
 
     useEffect(() => {
         {props.singleResult !== [] && props.singleResult.forEach(r => {
@@ -54,7 +52,7 @@ const SinglePage = (props) => {
            axios
             .get(`http://www.omdbapi.com/?t=${media.name}&plot=full&apikey=8582b8da`, 
             {headers: {
-                
+
             }})
             .then(response => {
                 setImdb(response.data)
@@ -64,7 +62,6 @@ const SinglePage = (props) => {
             }) 
         ) : console.log()}  
     }, [media.name]) 
-    console.log(imdb)
     return (
         <>
         {props.singleResult !== '' && imdb ?
